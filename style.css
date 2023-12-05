@@ -1,0 +1,29 @@
+.sunface{
+    position:absolute;
+    height:200px;
+    width:200px;
+    border-radius:100px;
+    border:1px solid black;
+    background-color: rgb(255, 204, 0);
+}
+.raysContainer{
+    position:absolute;
+}
+
+.rayE{
+
+}
+.rayO{
+
+}
+.sunContainer{
+
+
+
+}
+
+.sunDial{
+
+
+
+}
