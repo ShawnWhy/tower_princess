@@ -1,28 +1,63 @@
-.sunface{
+#sunFace{
     position:absolute;
     height:200px;
     width:200px;
     border-radius:100px;
-    border:1px solid black;
-    background-color: rgb(255, 204, 0);
+    /* border:1px solid black; */
+    background-image: url("./images/sunface.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+
+    /* background-color: rgb(255, 204, 0); */
 }
 .raysContainer{
     position:absolute;
 }
 
 .rayE{
+        border:1px solid black;
+
+    position:absolute;
+    height:60px;
+    width:400px;
+    background-image: url("./images/ray1.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    left:-200px;
+    top:230px;
+
 
 }
 .rayO{
+    border:1px solid black;
+
+ 
+    position:absolute;
+    height:60px;
+    width:1000px;
+    background-image: url("./images/ray2.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform-origin: center;
+    transform:rotate(90deg);
+    left:500px;
+    top:230px;
 
 }
-.sunContainer{
+#sunContainer{
 
 
 
 }
+#rayContainer{
+    
+}
 
-.sunDial{
+#sunDial{
+position:absolute;
+left:50%;
+top:30%;
 
 
 
