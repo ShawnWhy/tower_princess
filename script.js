@@ -73,7 +73,6 @@ function nightStart(){
 
     night="on";
     $("#sunDial").addClass("fadeSun");
-    $("#towerNight").css("animation","flipUp 1s both")
     setTimeout(() => {
         $("#sunDial").css("display","none")
         $("#fool").css("display","unset")
@@ -94,7 +93,12 @@ function nightGrow(){
     sundialRotation= sundialRotation.split("transform:rotate(")[1]
     // console.log(sundialRotation)
     sundialRotation=sundialRotation.split("deg)")[0]
-    var newAngle = sundialRotation-.1;
+    var newAngle = sundialRotation-.4;
+
+ if (newAngle <= -25) {
+ $("#towerNight").css("animation", "flipUp 1s both");
+
+  }
     if(newAngle<=-40){
         nightStart()
     }
@@ -176,12 +180,12 @@ function createStars(rotation){
     // if(difference<=-5){
         console.log("difference")
         console.log(difference);
-        var percentage = Math.abs(difference) / 65
-        for(let i=0; i<3; i++){
-            let randtop = Math.random()*60+20;
-            let randsize = Math.random()*2
+        var percentage = (Math.abs(difference) / 65)*100
+        for(let i=0; i<1; i++){
+            let randtop = Math.random()*60+2;
+            let randsize = Math.random()+.1
             let randRotation = Math.random()*65 - 45
-            let randLeft = Math.random()*40-20 
+            let randLeft = Math.random()*5-4 
             let starContainer = $("<div>")
             // console.log("rotation("+
             // parseInt(randRotation)+"deg)"
@@ -190,11 +194,11 @@ function createStars(rotation){
             starContainer.addClass("starContainer")
             starContainer.css("transform",
             "scale(" +randsize+")"+
-            "rotation("+parseInt(randRotation)+"deg)"
+            "rotate("+parseInt(randRotation)+"deg)"
             )
             console.log(starContainer.css("transform"))
             starContainer.css("top", randtop+"%");
-            starContainer.css("right", (percentage+randLeft)+"%");
+            starContainer.css("left", (percentage+randLeft)+"%");
             $("#sky").append(starContainer)
 
 
