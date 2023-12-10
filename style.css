@@ -10,6 +10,7 @@ body{
     overflow: hidden;
     position:relative;
     margin:auto;
+    transform: scale(.8);
 }
 #sunFace{
     position:absolute;
@@ -246,6 +247,18 @@ background-color: rgb(42, 139, 250);
     animation:starGrow .3s both;
 }
 
+
+.heartContainer{
+    position:absolute;
+    height:30px;
+    width:30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform-origin: center;
+    background-image: url("./images/Heart.svg");
+    animation:starGrow .3s both;
+}
+
 @keyframes starGrow {
     0%{height:5px; width: 5px;}
     100%{height:30px; width: 30px;}
@@ -297,8 +310,10 @@ background-color: rgb(42, 139, 250);
     top:2.5%;
     height:95%;
     width:95%;
+    transform-style: preserve-3d;
     display: none;
-    animation:letterDrop .5s both
+    animation:letterDrop .5s both;
+    transform:rotateY(-15deg)
 }
 
 @keyframes letterDrop {
@@ -313,12 +328,12 @@ background-color: rgb(42, 139, 250);
     
 }
 @keyframes letterFlip2 {
-    0%{ top:-50%}
-    100%{top:2.5%}
+    0%{ transform: rotateX(0deg);}
+    100%{transform: rotateX(179deg);}
     
 }
 #letterA{
-    background-color: aliceblue;
+    background-color: rgb(215, 225, 235);
     position:absolute;
     width:100%;
     height:30%;
@@ -337,22 +352,42 @@ background-color: rgb(42, 139, 250);
     height:100%;
 
     transform-style:preserve-3d;
-    transform: rotateX(179deg);
+    /* transform: rotateX(179deg); */
     transform-origin: bottom;
     display: none;
+    /* animation:letterFlip .5s both */
+
 
     
 }
 #letterC{
-    background-color: rgb(215, 225, 235);
+    background-color:aliceblue;
 
     position:absolute; 
     width:100%;
     height:100%;
     transform-style:preserve-3d;
-    transform: rotateX(178deg);
+    /* transform: rotateX(178deg); */
     transform-origin: top;
     display: none;
+   /* animation:letterFlip2 .5s both */
 
 
+
+}
+
+#Message{
+    width: 100%;
+    position: absolute;
+    transition: opacity 1s;
+    padding-top: 80px;
+    text-align: center;
+    font-size: 30px;
+    opacity: 0;
+    /* z-index: 50; */
+    margin: auto;
+}
+
+#instructions{
+    top: -79px;
 }

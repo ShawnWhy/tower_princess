@@ -77,6 +77,10 @@ $('body').click(() => {
     $('#cover').css("display", "none")
     expandSun()
 
+    $("#instructions").html(
+      "Please click on the sun and then move your mouse to make it go across the sky"
+    );
+
 })
 
 $("#sunFace").mousedown(() => {
@@ -128,6 +132,9 @@ function nightStart() {
 
             document.querySelector("#lutePlay").play()
             playStarMusic()
+              $("#instructions").html(
+                "Please click on a in the night sky to read your message"
+              );
 
             setTimeout(() => {
                 $("#princess").css("opacity", 1)
@@ -244,7 +251,7 @@ var starMusicInterval2;
 function playStarMusic() {
 starMusicInterval = setInterval(() => {
 
-     var stars = $(".starContainer")
+     var stars = $(".starContainer, .heartContainer")
      $(stars).each((id, value) => {
 
         let left=$(value).css("left")
@@ -263,8 +270,13 @@ starMusicInterval = setInterval(() => {
     }, 50);
 
      starMusicInterval2 = setInterval(() => {
-    
     for (let i = 0; i < 1; i++) {
+        var heartTrigger = "off";
+
+        let randSelect = Math.random();
+        if(randSelect>=.8){
+            heartTrigger="on"
+        }
         let randtop = Math.random() * 10-5;
         let randsize = Math.random() + .1
         let randRotation = Math.random() * 65 - 45
@@ -274,7 +286,13 @@ starMusicInterval = setInterval(() => {
         // parseInt(randRotation)+"deg)"
         // // "scale(" +randsize+")"
         // )
-        starContainer.addClass("starContainer")
+        if(heartTrigger=="on"){
+        starContainer.addClass("heartContainer");    
+        }
+        else{
+         starContainer.addClass("starContainer");
+        }
+       
         starContainer.css("transform",
             "scale(" + randsize + ")" +
             "rotate(" + parseInt(randRotation) + "deg)"
@@ -334,15 +352,32 @@ function createStars(rotation) {
     }
 }
 
-$("#sky").on("click",".starContainer", ()=>{
+$("#sky").on("click",".heartContainer", ()=>{
+
     console.log("clicking star")
     $("#letter").css("display","unset")
     $("#letterA").css("display","unset")
 
     setTimeout(() => {
         $("#letterB").css("display","unset")
+        setTimeout(() => {
+               $("#letterB").css("animation", "letterFlip1 .5s both"); 
+
+        }, 200);
+        document.querySelector("#page").currentTime=0;
+        document.querySelector("#page").play();
     }, 400);
     setTimeout(() => {
+         document.querySelector("#page").currentTime = 0;
+         document.querySelector("#page").play();
         $("#letterC").css("display","unset")
+        setTimeout(() => {
+               $("#letterC").css("animation", "letterFlip2 .5s both");
+         }, 200);
+         $("#Message").css("opacity", 1);
     }, 800);
+})
+
+$("#letter").click(()=>{
+    $("#letter").css("display","none");
 })
