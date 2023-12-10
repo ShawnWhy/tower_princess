@@ -64,7 +64,7 @@ body{
     background-size: cover;
     transform-origin: center;
     background-position: center;
-    transform: rotate(90deg);
+    /* transform: rotate(90deg); */
     left: -1500px;
     
 
@@ -175,6 +175,10 @@ background-color: rgb(42, 139, 250);
     background-size: contain;
 
     margin: auto;
+    transform-style:preserve-3d;
+    transform: rotateX(90deg);
+    transform-origin: bottom;
+    
 
 
 }
@@ -188,6 +192,8 @@ background-color: rgb(42, 139, 250);
     background-repeat: no-repeat;
     background-size: contain;
     margin: auto;
+    opacity: 0;
+    transition: opacity .5s;
 
 }
 
@@ -221,4 +227,19 @@ background-color: rgb(42, 139, 250);
     0%{opacity: 1;}
     100%{opacity: .01}
     
+}
+
+@keyframes flipUp {
+
+    0%{transform: rotateX(180deg);}
+    100%{transform: rotateX(0deg)}
+    
+}
+
+.starContainer{
+    position:absolute;
+    height:30px;
+    width:30px;
+    transform-origin: center;
+    background-image: url("./images/star.svg");
 }

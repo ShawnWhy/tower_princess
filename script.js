@@ -1,6 +1,6 @@
 var returnInterval;
 var night = "off"
-
+var starThrottle = "off"
 function expandSun(){
     varRays = $("#raysContainer .rays");
     $(varRays).each((id, value)=>{
@@ -73,10 +73,16 @@ function nightStart(){
 
     night="on";
     $("#sunDial").addClass("fadeSun");
+    $("#towerNight").css("animation","flipUp 1s both")
     setTimeout(() => {
         $("#sunDial").css("display","none")
         $("#fool").css("display","unset")
-    }, 400);
+        setTimeout(() => {
+            $("#princess").css("opacity",1)
+
+        }, 1000);
+        
+    }, 1000);
 
 
 }
@@ -86,22 +92,35 @@ function nightGrow(){
     var sundialRotation = $(sunDial).attr("style");
     // console.log(sundialRotation)
     sundialRotation= sundialRotation.split("transform:rotate(")[1]
-    console.log(sundialRotation)
+    // console.log(sundialRotation)
     sundialRotation=sundialRotation.split("deg)")[0]
-    var newAngle = sundialRotation-.2;
-    if(newAngle<=-30){
+    var newAngle = sundialRotation-.1;
+    if(newAngle<=-40){
         nightStart()
     }
     else{
+
+        if(starThrottle=="off"){
+            console.log("creating stars")
+            createStars(newAngle)
+            starThrottle="on"
+            setTimeout(() => {
+                starThrottle="off"
+    
+            }, 100);
+        }
     $(sunDial).attr("style","transform:rotate("+parseFloat(newAngle)+"deg)")
-    // console.log(parseInt(sundialRotation))
-    $("#sunFace").attr("style","transform:rotate(-"+parseFloat(newAngle)+"deg)scale(.6")
+    // console.log(parseFloat(sundialRotation))
+    let reverseAngel = parseFloat(newAngle)*-1
+    // console.log(reverseAngel)
+    $("#sunFace").attr("style","transform:rotate("+reverseAngel+"deg)scale(.6)")
 
     var nightOpacity = $("#night").css("opacity");
     nightOpacity=parseFloat(nightOpacity)
-    nightOpacity+=.005;
+    nightOpacity+=.003;
     $("#night").css("opacity",nightOpacity)
     $("#raysContainer2").css("animation","rotateSun 3s linear infinite")
+ 
     }
 }
 
@@ -128,14 +147,14 @@ function nightReturnGradual(){
     // console.log(sundialRotation)
     sundialRotation= sundialRotation.split("transform:rotate(")[1]
     sundialRotation=sundialRotation.split("deg)")[0]
-    var newAngle = sundialRotation-.2;
+    var newAngle = sundialRotation-.3;
     // if(newAngle<=-30){
 
     // }
     $(sunDial).attr("style","transform:rotate("+parseFloat(newAngle)+"deg)")
 
     // console.log(parseInt(sundialRotation))
-    $("#sunFace").attr("style","transform:rotate(-"+parseFloat(newAngle)+"deg)scale(.6")
+    $("#sunFace").attr("style","transform:rotate("+(-1*parseFloat(newAngle))+"deg)scale(.6")
 
     var nightOpacity = $("#night").css("opacity");
     nightOpacity=parseFloat(nightOpacity)
@@ -150,3 +169,37 @@ $("body").mousemove(()=>{
 
     }
 })
+
+function createStars(rotation){
+    console.log(rotation)
+    difference = -45 - rotation;
+    // if(difference<=-5){
+        console.log("difference")
+        console.log(difference);
+        var percentage = Math.abs(difference) / 65
+        for(let i=0; i<3; i++){
+            let randtop = Math.random()*60+20;
+            let randsize = Math.random()*2
+            let randRotation = Math.random()*65 - 45
+            let randLeft = Math.random()*40-20 
+            let starContainer = $("<div>")
+            // console.log("rotation("+
+            // parseInt(randRotation)+"deg)"
+            // // "scale(" +randsize+")"
+            // )
+            starContainer.addClass("starContainer")
+            starContainer.css("transform",
+            "scale(" +randsize+")"+
+            "rotation("+parseInt(randRotation)+"deg)"
+            )
+            console.log(starContainer.css("transform"))
+            starContainer.css("top", randtop+"%");
+            starContainer.css("right", (percentage+randLeft)+"%");
+            $("#sky").append(starContainer)
+
+
+        // }
+        
+
+    }
+}
