@@ -1,64 +1,224 @@
+body{
+    text-align:center;
+}
+
+#container{
+    height:800px;
+    width:1200px;
+    border: 2px black solid;
+    border-radius:12px;
+    overflow: hidden;
+    position:relative;
+    margin:auto;
+}
 #sunFace{
     position:absolute;
     height:200px;
     width:200px;
     border-radius:100px;
-    /* border:1px solid black; */
+    border:.5px solid black;
     background-image: url("./images/sunface.svg");
     background-repeat: no-repeat;
     background-size: contain;
+    
 
 
-    /* background-color: rgb(255, 204, 0); */
 }
-.raysContainer{
-    position:absolute;
+
+#sunFace:hover{
+   
+    height:210px;
+    width:210px;
+    top:-10px;
+    left:-10px
+
+
+
 }
+
+
 
 .rayE{
-        border:1px solid black;
-
-    position:absolute;
-    height:60px;
-    width:400px;
-    background-image: url("./images/ray1.svg");
+    /* border: 1px solid black; */
+    position: absolute;
+    height: 60px;
+    width: 600px;
+    background-image: url(./images/ray1.svg);
     background-repeat: no-repeat;
     background-size: contain;
-    left:-200px;
-    top:230px;
+    left: -300px;
+    top: -25px;
+    margin: auto;
 
 
 }
 .rayO{
-    border:1px solid black;
-
- 
-    position:absolute;
-    height:60px;
-    width:1000px;
-    background-image: url("./images/ray2.svg");
+    margin:auto;
+    border: 1px solid black;
+    position: absolute;
+    height: 20px;
+    width: 3000px;
+    background-image: url(./images/ray2.svg);
     background-repeat: no-repeat;
-    background-size: contain;
+    image-orientation: none;
+    background-size: cover;
     transform-origin: center;
-    transform:rotate(90deg);
-    left:500px;
-    top:230px;
-
-}
-#sunContainer{
-
-
-
-}
-#rayContainer{
+    background-position: center;
+    transform: rotate(90deg);
+    left: -1500px;
     
+
+}
+.rays{
+    transition: transform .8s;
+}
+
+#raysContainer{
+  position:absolute;
+  top:100px;
+  left:100px;
+    transform-origin: center;
+    animation:rotateSun 5s linear infinite;
+    text-align: center;
+    
+}
+#raysContainer2{
+    position:absolute;
+    top:100px;
+    left:100px;
+    transform-origin: center;
+    /* animation:rotateSun 7s linear infinite; */
 }
 
 #sunDial{
-position:absolute;
-left:50%;
-top:30%;
+    position: absolute;
+    left: calc(50% - 100px);
+    top: -50%;
+    height: 200%;
+    border: 1px solid black;
+    transform-origin: bottom;
+    
+}
+#sunContainer{
+  
+    position: absolute;
+    top: 30%;
+    
 
 
+}
+@keyframes rotateSun {
+0%{transform: rotate(0deg);}
+50%{transform: rotate(180deg);}
+100%{transform: rotate(360deg);}
+    
+}
 
+#towerContainer{
+    position:absolute;
+    height:100%;
+    width:100%;
+    pointer-events: none;
+}
+
+#sky{
+    position:Absolute;
+height:100%;
+width:100%;
+/* top:50%;
+left:50%; */
+
+
+}
+#day{
+    position:Absolute;
+    height:100%;
+    width:100%;
+    
+background-color: rgb(42, 139, 250);
+}
+#night{
+    position:Absolute;
+    height:100%;
+    width:100%;
+    background-color: rgb(0, 0, 0);
+    opacity: .2;
+}
+#towerContainer{
+    position:Absolute;
+    height:100%;
+    width:100%;
+    /* background-color: rgb(0, 0, 0);
+    opacity: .2; */
+}
+
+#towerDay{
+    position:Absolute;
+    height:100%;
+    width:100%;
+    position: absolute;
+    background-image: url(./images/towerDay.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    margin: auto;
+
+}
+
+#towerNight{
+    position:Absolute;
+    height:100%;
+    width:100%;
+    position: absolute;
+    background-image: url(./images/towerNight.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    margin: auto;
+
+
+}
+#princess{
+    height: 180px;
+    width: 180px;
+    top: 35%;
+    left: 28%;
+    position: absolute;
+    background-image: url(./images/princess.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: auto;
+
+}
+
+#fool{
+    background-image: url(./images/fool.svg);
+    height: 550px;
+    width: 550px;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    left: 60%;
+    animation: moonFall both linear .5s;
+    pointer-events: none;
+}
+
+@keyframes moonFall {
+
+    0%{top:-100%}
+    80%{top:25%}
+    95%{top:23%}
+    100%{top:24%}
+    
+}
+
+.fadeSun{
+    animation:fadeSun .5s both
+}
+
+@keyframes fadeSun {
+
+    0%{opacity: 1;}
+    100%{opacity: .01}
+    
 }
