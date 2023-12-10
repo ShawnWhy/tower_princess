@@ -389,5 +389,6 @@ background-color: rgb(42, 139, 250);
 }
 
 #instructions{
+    position: relative;
     top: -79px;
 }

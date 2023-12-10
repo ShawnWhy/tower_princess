@@ -133,7 +133,7 @@ function nightStart() {
             document.querySelector("#lutePlay").play()
             playStarMusic()
               $("#instructions").html(
-                "Please click on a in the night sky to read your message"
+                "Please click on a heart in the night sky to read your message"
               );
 
             setTimeout(() => {
