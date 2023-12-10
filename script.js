@@ -73,15 +73,14 @@ function expandSun() {
 }
 
 var dragTrigger = "off"
-$('body').click(() => {
-    $('#cover').css("display", "none")
-    expandSun()
+$('#cover').click(() => {
+  $("#cover").css("display", "none");
+  expandSun();
 
-    $("#instructions").html(
-      "Please click on the sun and then move your mouse to make it go across the sky"
-    );
-
-})
+  $("#instructions").html(
+    "Please click on the sun and then move your mouse to make it go across the sky"
+  );
+});
 
 $("#sunFace").mousedown(() => {
     // console.log("mouseDown")
